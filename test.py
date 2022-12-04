@@ -114,6 +114,12 @@ def main():
     print(args.checkpoint)
     
     engine = trainer(scaler, args, adj, global_train_steps , device)
+    
+    macs , params = engine.check_parameter((12,170,1))
+    print(" ")
+    print(macs, params)
+    print(" ")
+
 
     valid_loss = []
     valid_mae = []
