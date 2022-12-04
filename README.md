@@ -1,7 +1,11 @@
+## Train Commands
 
+```
+python train.py --device cuda:0
+```
 
 ## Test Commands
 
 ```
-python train.py
+python test.py --checkpoint garage8/PEMS08_epoch_158_16.75.pth --batch_size 1 --device cuda:0
 ```
