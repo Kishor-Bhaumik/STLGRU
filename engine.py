@@ -2,7 +2,8 @@ import torch
 import torch.optim as optim
 from model import model
 import util
-import pdb
+import pdbfrom torchsummary import summary
+
 
 class trainer():
     def __init__(self, scaler, args, adj, global_train_steps, device):
@@ -57,7 +58,8 @@ class trainer():
         rmse = util.masked_rmse(predict,real,0.0).item()
         return loss.item(),mae,mape,rmse
 
-    
+
     def check_parameter(self, rand):
+        sumry =summary(self.model,  rand)
         macs, params = get_model_complexity_info(self.model, rand , as_strings=True, print_per_layer_stat=True, verbose=True)
         return macs , params
