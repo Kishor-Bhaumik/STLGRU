@@ -2,7 +2,9 @@ import torch
 import torch.optim as optim
 from model import model
 import util
-import pdbfrom torchsummary import summary
+import pdb
+from ptflops import get_model_complexity_info
+from torchsummary import summary
 
 
 class trainer():
