@@ -12,13 +12,14 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--device',type=str,default='cuda:1',help='')
 
-parser.add_argument('--data',type=str,default='data/PEMS07/',help='data path')
-parser.add_argument('--adjdata',type=str,default='data/PEMS07/adj_PEMS07.pkl',help='adj data path')
-parser.add_argument('--save',type=str,default='./garage7_30min/PEMS07',help='save path')
-parser.add_argument('--num_nodes',type=int,default=883,help='number of nodes') #7 :-> 883  
-parser.add_argument('--num_for_predict',type=int,default=6,help='Forecast sequence length')
+parser.add_argument('--garage',type=str,default='./garage8',help='garage path')
+parser.add_argument('--device',type=str,default='cuda:4',help='')
+parser.add_argument('--batch_size',type=int,default=128,help='batch size')
+parser.add_argument('--data',type=str,default='data/PEMS08',help='data path')
+parser.add_argument('--adjdata',type=str,default='data/PEMS08/adj_pems08.pkl',help='adj data path')
+parser.add_argument('--num_nodes',type=int,default=170,help='number of nodes')    #7 :-> 883   4:-> 307  3:- 358   8:-> 170
 
-parser.add_argument('--seq_length',type=int,default=12,help='Input sequence length')
+parser.add_argument('--out_length',type=int,default=12,help='Forecast sequence length')
 
 parser.add_argument('--n_hid',type=int,default=64,help='')
 parser.add_argument('--input_dim',type=int,default=1,help='inputs dimension')
