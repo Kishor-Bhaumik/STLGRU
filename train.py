@@ -63,7 +63,7 @@ def main():
     
     engine = trainer(scaler, args, adj, global_train_steps , device)
 
-    print("start training...",flush=True)
+    print("start training...")
     his_loss =[]
     val_time = []
     train_time = []
