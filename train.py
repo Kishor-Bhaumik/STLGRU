@@ -7,7 +7,6 @@ from engine import trainer
 import os
 import pdb
 
-print (" pems07 no conv 30 min  ")
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--device',type=str,default='cuda:1',help='')
