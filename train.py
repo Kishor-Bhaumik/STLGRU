@@ -88,7 +88,7 @@ def main():
             engine.scheduler.step() #
             if iter % args.print_every == 0 :
                 log = 'Iter: {:03d}, Train Loss: {:.4f}, Train MAE: {:.4f}, Train MAPE: {:.4f}, Train RMSE: {:.4f}'
-                print(log.format(iter, train_loss[-1], train_mae[-1], train_mape[-1], train_rmse[-1]),flush=True)
+                print(log.format(iter, train_loss[-1], train_mae[-1], train_mape[-1], train_rmse[-1]))
         t2 = time.time()
         train_time.append(t2-t1)
 
@@ -125,7 +125,7 @@ def main():
         his_loss.append(mvalid_loss)
 
         log = 'Epoch: {:03d}, Train Loss: {:.4f}, Train MAE: {:.4f}, Train MAPE: {:.4f}, Train RMSE: {:.4f}, Valid Loss: {:.4f}, Valid MAE: {:.4f}, Valid MAPE: {:.4f}, Valid RMSE: {:.4f}, Training Time: {:.4f}/epoch'
-        print(log.format(i, mtrain_loss, mtrain_mae, mtrain_mape, mtrain_rmse, mvalid_loss, mvalid_mae, mvalid_mape, mvalid_rmse, (t2 - t1)),flush=True)
+        print(log.format(i, mtrain_loss, mtrain_mae, mtrain_mape, mtrain_rmse, mvalid_loss, mvalid_mae, mvalid_mape, mvalid_rmse, (t2 - t1)))
         torch.save(engine.model.state_dict(), args.save+"_epoch_"+str(i)+"_"+str(round(mvalid_loss,2))+".pth")
     print("Average Training Time: {:.4f} secs/epoch".format(np.mean(train_time)))
     print("Average Inference Time: {:.4f} secs".format(np.mean(val_time)))
