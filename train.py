@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--device',type=str,default='cuda:1',help='')
 
 parser.add_argument('--garage',type=str,default='./garage8',help='garage path')
-parser.add_argument('--batch_size',type=int,default=128,help='batch size')
+parser.add_argument('--batch_size',type=int,default=4,help='batch size')
 parser.add_argument('--data',type=str,default='data/PEMS08',help='data path')
 parser.add_argument('--adjdata',type=str,default='data/PEMS08/adj_pems08.pkl',help='adj data path')
 parser.add_argument('--num_nodes',type=int,default=170,help='number of nodes')    #7 :-> 883   4:-> 307  3:- 358   8:-> 170
