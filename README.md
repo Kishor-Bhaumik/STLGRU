@@ -18,16 +18,19 @@ put into the `data/` folder.
 
 ## Process raw data for METR-LA and PEMS-BAY
 
-```
 # Create data directories
+```
 mkdir -p data/{METR-LA,PEMS-BAY}
+```
 
 # METR-LA
+```
 python generate_training_data.py --output_dir=data/METR-LA --traffic_df_filename=data/metr-la.h5
-
+```
 # PEMS-BAY
+```
 python generate_training_data.py --output_dir=data/PEMS-BAY --traffic_df_filename=data/pems-bay.h5
-
+```
 
 ## Train Commands
 
