@@ -1,6 +1,6 @@
 # STLGRU: Spatio-Temporal Lightweight Graph GRU for Traffic Flow Prediction
 
-![STLGRU](figures/archnew.PNG "Model Architecture")
+![STLGRU](figures/archnew.png "Model Architecture")
 
 This is the official implementation of STLGRU: Spatio-Temporal Lightweight Graph GRU for Traffic Flow Prediction: \
 Kishor Kumar Bhaumik, Fahim Faisal Niloy, Saif mahmud and Simon S. Woo [STLGRU: Spatio-Temporal Lightweight Graph GRU for Traffic Flow Prediction](https://arxiv.org).
