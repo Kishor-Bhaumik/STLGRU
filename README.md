@@ -18,27 +18,27 @@ put into the `data/` folder.
 
 ## Process raw data for METR-LA and PEMS-BAY
 
-# Create data directories
+### Create data directories
 ```
 mkdir -p data/{METR-LA,PEMS-BAY}
 ```
 
-# METR-LA
+### METR-LA
 ```
 python generate_training_data.py --output_dir=data/METR-LA --traffic_df_filename=data/metr-la.h5
 ```
-# PEMS-BAY
+### PEMS-BAY
 ```
 python generate_training_data.py --output_dir=data/PEMS-BAY --traffic_df_filename=data/pems-bay.h5
 ```
 
-## Train Commands
+## Train Commands for PEMS08 
 
 ```
 python train.py --device cuda:0
 ```
 
-## Test Commands
+## Test Commands for PEMS08 
 
 ```
 python test.py --checkpoint garage8/PEMS08_epoch_158_16.75.pth --batch_size 1 --device cuda:0
