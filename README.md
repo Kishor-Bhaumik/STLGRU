@@ -1,3 +1,6 @@
+## Data Preparation
+Download the dataset(PEMS03, PEMS04, PEMS07, PEMS08) from here, [Baidu Drive](https://pan.baidu.com/s/1pbRUmRg_Y69KRNEuKZParQ), and the password is <b>1s5t</b>.
+
 ## Train Commands
 
 ```
