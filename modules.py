@@ -11,9 +11,6 @@ class GRUcell(nn.Module):
         self.ur = torch.nn.Parameter(torch.Tensor(u_size,u_size))
         self.uh = torch.nn.Parameter(torch.Tensor(u_size,u_size))
 
-        # self.bz= torch.nn.Parameter(torch.ones(u_size)) #bias
-        # self.br=  torch.nn.Parameter(torch.ones(u_size)) #bias
-        # self.bh =  torch.nn.Parameter(torch.ones(u_size)) #bias
 
         nn.init.xavier_uniform_(self.wh)
         nn.init.xavier_uniform_(self.wr)
@@ -25,22 +22,9 @@ class GRUcell(nn.Module):
 
     def forward(self, xh,xr,xz ,ht_1):
 
-        # z = torch.sigmoid( torch.matmul(xz,self.wz)+ torch.matmul(ht_1,self.uz)+self.bz )
-        # r = torch.sigmoid( torch.matmul(xr,self.wr)+ torch.matmul(ht_1,self.ur) + self.br )
-        # h_hat = torch.tanh( torch.matmul(xh, self.wh)+ r*torch.matmul(ht_1, self.uh)+ self.bh)
-
         z = torch.sigmoid( torch.matmul(xz,self.wz)+ torch.matmul(ht_1,self.uz))
         r = torch.sigmoid( torch.matmul(xr,self.wr)+ torch.matmul(ht_1,self.ur) )
         h_hat = torch.tanh( torch.matmul(xh, self.wh)+ r*torch.matmul(ht_1, self.uh))
-
-
-        # z = torch.sigmoid(xz+ torch.matmul(ht_1,self.uz)+self.bz )
-        # r = torch.sigmoid(xr+ torch.matmul(ht_1,self.ur) + self.br )
-        # h_hat = torch.tanh(xh+ r*torch.matmul(ht_1, self.uh)+ self.bh)
-
-        # z = torch.sigmoid( xz+ht_1)
-        # r = torch.sigmoid(xr+ ht_1)
-        # h_hat = torch.tanh(xh+ r*ht_1)
 
         h= z*ht_1+(1-z)*h_hat
 
@@ -69,15 +53,14 @@ class gcn_glu(nn.Module):
         self.c_out = c_out
     def forward(self, x, A):
         
-        # (3N, B, C)
-        #pdb.set_trace()
-        x = x.unsqueeze(3) # (3N, B, C, 1)
-        x = x.permute(1, 2, 0, 3) # (3N, B, C, 1)->(B, C, 3N, 1)
+        # (N, B, C)
+        x = x.unsqueeze(3) # (N, B, C, 1)
+        x = x.permute(1, 2, 0, 3) # (N, B, C, 1)->(B, C, N, 1)
         ax = self.nconv(A,x)
-        axw = self.mlp(ax) # (B, 2C', 3N, 1)
+        axw = self.mlp(ax) # (B, 2C', N, 1)
         axw_1,axw_2 = torch.split(axw, [self.c_out, self.c_out], dim=1)
-        axw_new = axw_1 * torch.sigmoid(axw_2) # (B, C', 3N, 1)
-        axw_new = axw_new.squeeze(3) # (B, C', 3N)
-        axw_new = axw_new.permute(2, 0, 1) # (3N, B, C')
+        axw_new = axw_1 * torch.sigmoid(axw_2) # (B, C', N, 1)
+        axw_new = axw_new.squeeze(3) # (B, C', N)
+        axw_new = axw_new.permute(2, 0, 1) # (N, B, C')
         return axw_new
 
