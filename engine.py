@@ -62,6 +62,6 @@ class trainer():
 
 
     def check_parameter(self, rand):
-        sumry =summary(self.model,  rand)
+        #sumry =summary(self.model,  rand)
         macs, params = get_model_complexity_info(self.model, rand , as_strings=True, print_per_layer_stat=True, verbose=True)
         return macs , params
