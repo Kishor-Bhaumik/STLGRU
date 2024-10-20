@@ -42,3 +42,20 @@ python train.py --device cuda:0
 ```
 python test.py --checkpoint garage8/PEMS08_epoch_158_16.75.pth --batch_size 1 --device cuda:0
 ```
+
+## Citation
+
+If you find this useful, please cite our paper: "Large Language Models for Time Series: A Survey"
+```
+
+@inproceedings{bhaumik2024stlgru,
+  title={STLGRU: Spatio-temporal lightweight graph GRU for traffic flow prediction},
+  author={Bhaumik, Kishor Kumar and Niloy, Fahim Faisal and Mahmud, Saif and Woo, Simon S},
+  booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},
+  pages={288--299},
+  year={2024},
+  organization={Springer}
+}
+```
+
+
